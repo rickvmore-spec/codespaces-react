@@ -1,31 +1,1318 @@
-.App {
-  text-align: center;
-}
+/* ==========================================
+   APP LAYOUT
+   ========================================== */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  position: relative;
+}
+
+/* ==========================================
+   HEADER & HERO
+   ========================================== */
+
+.app-header {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.paramount-brand {
+  display: flex;
+  align-items: center;
+}
+
+.paramount-logo {
+  height: 24px;
+  width: auto;
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.nav-item {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  transition: color 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  border-bottom: 2px solid var(--blue-primary);
+}
+
+.hero-banner {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
+  background: radial-gradient(ellipse at center top, var(--blue-glow) 0%, transparent 60%);
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.race-flag {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  animation: flagWave 2s ease-in-out infinite;
+}
+
+@keyframes flagWave {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: var(--space-lg);
+}
+
+.hero-the {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--text-secondary);
+}
+
+.hero-amazing {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--race-yellow) 0%, var(--race-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.hero-sub {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--blue-light);
+  letter-spacing: 0.15em;
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  text-transform: none;
+}
+
+/* ==========================================
+   MAD LIB FORM
+   ========================================== */
+
+.madlib-form-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--race-red), var(--race-yellow), var(--race-green), var(--blue-primary));
+}
+
+.form-envelope-tab {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Progress Bar */
+.form-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  padding: 0 var(--space-md);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  z-index: 1;
+  cursor: default;
+}
+
+.progress-step.completed {
+  cursor: pointer;
+}
+
+.progress-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 1.1rem;
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  transition: all 0.3s;
+}
+
+.progress-step.active .progress-dot {
+  background: var(--blue-primary);
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 20px var(--blue-glow);
+}
+
+.progress-step.completed .progress-dot {
+  background: var(--race-green);
+  border-color: var(--race-green);
+  color: white;
+  font-weight: 700;
+}
+
+.progress-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.progress-step.active .progress-label {
+  color: var(--text-primary);
+}
+
+.progress-line {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background: var(--border-color);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--blue-primary);
+  transition: width 0.4s ease;
+}
+
+/* Form Steps */
+.form-step {
+  min-height: 280px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.step-header h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-sm);
+}
+
+.step-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  text-transform: none;
+}
+
+/* Mad Lib Sentence */
+.madlib-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-size: 1.2rem;
+  line-height: 2.5;
+  padding: var(--space-lg) 0;
+}
+
+.madlib-text {
+  color: var(--text-secondary);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.madlib-input {
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: var(--space-sm) var(--space-md);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.madlib-input:focus {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+.madlib-input.error {
+  border-color: var(--race-red);
+}
+
+.zip-input {
+  width: 140px;
+  text-align: center;
+}
+
+.name-input {
+  width: 200px;
+}
+
+.error-text {
+  display: block;
+  color: var(--race-red);
+  font-size: 0.75rem;
+  margin-top: 2px;
+  font-family: var(--font-body);
+  text-transform: none;
+}
+
+.location-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: var(--space-md);
+}
+
+.hint-icon {
+  font-size: 1rem;
+}
+
+/* Pill Selector */
+.pill-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-sm) 0;
+}
+
+.pill-selector.error {
+  padding: var(--space-sm);
+  border: 1px solid var(--race-red);
+  border-radius: var(--radius-md);
+}
+
+.pill {
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--border-light);
+  border-radius: 999px;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.pill:hover {
+  border-color: var(--blue-light);
+  color: var(--text-primary);
+}
+
+.pill.selected {
+  background: var(--blue-primary);
+  border-color: var(--blue-primary);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Card Selector */
+.style-section {
+  margin-bottom: var(--space-xl);
 }
 
-.heart {
-  color: #ff0000;
+.style-section h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  text-align: center;
 }
 
-.small {
+.card-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+}
+
+.style-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-lg) var(--space-md);
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.style-card:hover {
+  border-color: var(--blue-light);
+  background: var(--bg-card-hover);
+}
+
+.style-card.selected {
+  border-color: var(--blue-primary);
+  background: rgba(0, 100, 255, 0.1);
+  box-shadow: 0 0 20px var(--blue-glow);
+}
+
+.card-icon {
+  font-size: 2rem;
+}
+
+.card-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.card-desc {
   font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Special Ideas */
+.special-ideas-section {
+  margin-bottom: var(--space-xl);
+}
+
+.madlib-textarea {
+  width: 100%;
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: var(--space-md);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  min-height: 100px;
+}
+
+.madlib-textarea:focus {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+.madlib-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Race Summary */
+.race-summary {
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.race-summary h3 {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.summary-value {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Form Navigation */
+.form-nav {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.nav-spacer {
+  flex: 1;
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: var(--space-md) var(--space-xl);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-back:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.btn-next {
+  background: var(--blue-primary);
+  color: white;
+}
+
+.btn-next:hover {
+  background: var(--blue-dark);
+  box-shadow: 0 4px 15px var(--blue-glow);
+}
+
+.btn-generate {
+  background: linear-gradient(135deg, var(--race-red) 0%, var(--race-yellow) 100%);
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  padding: var(--space-md) var(--space-2xl);
+}
+
+.btn-generate:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(255, 65, 54, 0.4);
+}
+
+.btn-small {
+  font-size: 0.8rem;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-small:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.btn-reset {
+  color: var(--race-red);
+  border-color: var(--race-red);
+}
+
+.btn-reset:hover {
+  background: var(--race-red);
+  color: white;
+}
+
+/* ==========================================
+   GENERATING OVERLAY
+   ========================================== */
+
+.generating-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 26, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.3s;
+}
+
+.generating-content {
+  text-align: center;
+}
+
+.generating-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.generating-content p {
+  color: var(--text-secondary);
+}
+
+.generating-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--blue-primary);
+  border-right-color: var(--race-red);
+  border-bottom-color: var(--race-yellow);
+  border-radius: 50%;
+  margin: 0 auto var(--space-lg);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   RACE ROUTE DISPLAY
+   ========================================== */
+
+.race-route-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+/* Race Header */
+.race-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.race-banner {
+  padding: var(--space-2xl) var(--space-xl);
+  background: radial-gradient(ellipse at center, var(--blue-glow) 0%, transparent 70%);
+}
+
+.race-flag-icon {
+  font-size: 3rem;
+  animation: flagWave 2s ease-in-out infinite;
+}
+
+.race-title {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--race-yellow) 0%, var(--race-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+}
+
+.race-tagline {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  text-transform: none;
+}
+
+.race-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--blue-light);
+  text-transform: capitalize;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.special-notes-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md);
+  background: rgba(255, 220, 0, 0.1);
+  border: 1px solid rgba(255, 220, 0, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--race-yellow);
+  font-size: 0.9rem;
+}
+
+/* Controls */
+.race-controls {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+/* Start / Finish Banners */
+.start-banner,
+.finish-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.start-banner {
+  background: linear-gradient(135deg, rgba(0, 100, 255, 0.15) 0%, rgba(46, 204, 64, 0.15) 100%);
+  border: 1px solid rgba(0, 100, 255, 0.3);
+  color: var(--blue-light);
+}
+
+.finish-banner {
+  background: linear-gradient(135deg, rgba(255, 220, 0, 0.15) 0%, rgba(255, 65, 54, 0.15) 100%);
+  border: 1px solid rgba(255, 220, 0, 0.3);
+  color: var(--race-yellow);
+  margin-top: var(--space-lg);
+}
+
+.finish-banner p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-transform: none;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.start-flag,
+.finish-flag {
+  font-size: 2rem;
+}
+
+/* Leg Cards */
+.race-legs {
+  position: relative;
+}
+
+.leg-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.leg-card.active {
+  border-color: var(--blue-primary);
+}
+
+.leg-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.leg-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.leg-number {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--blue-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.leg-info {
+  flex: 1;
+}
+
+.leg-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.leg-duration {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.leg-toggle {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Leg Content & Route Line */
+.leg-content {
+  padding: 0 var(--space-lg) var(--space-lg);
+  animation: fadeIn 0.3s ease;
+}
+
+.leg-route-line {
+  position: relative;
+}
+
+.route-stop {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.route-stop:last-child {
+  margin-bottom: 0;
+}
+
+.route-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.connector-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.connector-line {
+  position: absolute;
+  top: 12px;
+  bottom: -16px;
+  width: 2px;
+  background: var(--border-light);
+}
+
+.route-stop:last-child .connector-line {
+  display: none;
+}
+
+/* Race Element Cards */
+.race-element-card {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.element-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 3px var(--space-md);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: white;
+}
+
+.element-detail {
+  padding: var(--space-md);
+}
+
+.element-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+  text-transform: none;
+}
+
+.element-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* Clue Envelope */
+.clue-envelope {
+  background: var(--bg-card);
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.clue-envelope:hover {
+  border-color: var(--blue-primary);
+}
+
+.clue-sealed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.envelope-icon {
+  font-size: 1.5rem;
+}
+
+.clue-revealed {
+  color: var(--blue-light);
+  font-style: italic;
+  animation: fadeIn 0.4s;
+}
+
+/* Activity Detail */
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.activity-cat-icon {
+  font-size: 1.5rem;
+}
+
+.activity-header h4 {
+  font-size: 1rem;
+  text-transform: none;
+}
+
+.activity-category {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.activity-detail > p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.activity-meta {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.meta-tag {
+  font-size: 0.75rem;
+  padding: 2px var(--space-sm);
+  background: var(--bg-card);
+  border-radius: 999px;
+  color: var(--text-secondary);
+}
+
+/* Challenge Box */
+.challenge-box {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--border-light);
+}
+
+.challenge-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--race-red);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.challenge-box p {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* Detour Options */
+.detour-options {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-sm);
+  align-items: stretch;
+}
+
+.detour-option {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.option-header {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.detour-option h4 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-xs);
+  text-transform: none;
+}
+
+.option-a {
+  border-color: var(--race-yellow);
+}
+
+.option-a h4 {
+  color: var(--race-yellow);
+}
+
+.option-b {
+  border-color: var(--blue-light);
+}
+
+.option-b h4 {
+  color: var(--blue-light);
+}
+
+.detour-option p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.detour-vs {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Speed Bump */
+.optional-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 2px var(--space-sm);
+  background: rgba(255, 133, 27, 0.2);
+  color: var(--race-orange);
+  border-radius: 999px;
+  margin-bottom: var(--space-sm);
+}
+
+/* Fork Paths */
+.fork-paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.fork-path {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+}
+
+.path-header {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.path-a {
+  border-top: 3px solid var(--race-purple);
+}
+
+.path-b {
+  border-top: 3px solid var(--race-green);
+}
+
+.fork-path p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Pit Stop */
+.pitstop-celebration {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid rgba(46, 204, 64, 0.3);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+}
+
+.celebration-icon {
+  font-size: 1.5rem;
+}
+
+.pitstop-celebration p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Race Footer */
+.race-footer {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-tip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.footer-tip h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-md);
+}
+
+.footer-tip ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-tip li {
+  position: relative;
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer-tip li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--race-green);
+  font-weight: 700;
+}
+
+.paramount-footer {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.paramount-footer strong {
+  color: var(--blue-light);
+}
+
+.footer-stream {
+  font-size: 0.75rem;
+  margin-top: var(--space-xs);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .hero-amazing {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .form-card {
+    padding: var(--space-lg);
+  }
+
+  .madlib-sentence {
+    font-size: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .madlib-input {
+    font-size: 1rem;
+  }
+
+  .name-input {
+    width: 100%;
+  }
+
+  .card-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detour-options {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .detour-vs {
+    justify-content: center;
+    padding: var(--space-xs) 0;
+  }
+
+  .fork-paths {
+    grid-template-columns: 1fr;
+  }
+
+  .race-stats {
+    gap: var(--space-md);
+  }
+
+  .stat {
+    min-width: 80px;
+  }
+
+  .race-title {
+    font-size: 1.8rem;
+  }
+
+  .progress-label {
+    display: none;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-amazing {
+    font-size: 2rem;
+  }
+
+  .card-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .race-route-container {
+    padding: var(--space-md);
+  }
+
+  .leg-header {
+    padding: var(--space-md);
+  }
 }
