@@ -1,0 +1,449 @@
+/* ==========================================
+   AI PLANNER WIZARD — isolated styles
+   ========================================== */
+
+.aiw-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+.aiw-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.aiw-rainbow-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0064FF, #B10DC9, #FF4136, #FFDC00, #2ECC40);
+}
+
+/* Header */
+.aiw-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.aiw-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
+  color: white;
+  border-radius: 999px;
+  margin-bottom: var(--space-sm);
+}
+
+.aiw-header h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-xs);
+}
+
+.aiw-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Progress */
+.aiw-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  padding: 0 var(--space-md);
+}
+
+.aiw-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  z-index: 1;
+}
+
+.aiw-progress-step.done {
+  cursor: pointer;
+}
+
+.aiw-progress-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  transition: all 0.3s;
+}
+
+.aiw-progress-step.active .aiw-progress-dot {
+  background: var(--blue-primary);
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 16px var(--blue-glow);
+}
+
+.aiw-progress-step.done .aiw-progress-dot {
+  background: var(--race-green);
+  border-color: var(--race-green);
+  color: white;
+  font-weight: 700;
+}
+
+.aiw-progress-step span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.aiw-progress-step.active span {
+  color: var(--text-primary);
+}
+
+.aiw-progress-track {
+  position: absolute;
+  top: 18px;
+  left: 50px;
+  right: 50px;
+  height: 2px;
+  background: var(--border-color);
+}
+
+.aiw-progress-fill {
+  height: 100%;
+  background: var(--blue-primary);
+  transition: width 0.4s ease;
+}
+
+/* Error banner */
+.aiw-error-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  background: rgba(255, 65, 54, 0.1);
+  border: 1px solid rgba(255, 65, 54, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--race-red);
+  font-size: 0.85rem;
+}
+
+/* Steps */
+.aiw-step {
+  min-height: 220px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Fields */
+.aiw-field {
+  margin-bottom: var(--space-lg);
+}
+
+.aiw-field label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.aiw-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.75rem;
+}
+
+.aiw-field input[type="text"],
+.aiw-field input[type="number"],
+.aiw-field input[type="date"],
+.aiw-field input[type="time"] {
+  width: 100%;
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 10px var(--space-md);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.aiw-field input:focus {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+.aiw-field input.error {
+  border-color: var(--race-red);
+}
+
+.aiw-field-error {
+  display: block;
+  color: var(--race-red);
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.aiw-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* Budget cards */
+.aiw-budget-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.aiw-budget-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-md) var(--space-sm);
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.aiw-budget-card:hover {
+  border-color: var(--blue-light);
+  background: var(--bg-card-hover);
+}
+
+.aiw-budget-card.selected {
+  border-color: var(--blue-primary);
+  background: rgba(0, 100, 255, 0.1);
+  box-shadow: 0 0 16px var(--blue-glow);
+}
+
+.aiw-budget-icon {
+  font-size: 1.5rem;
+}
+
+.aiw-budget-label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.aiw-budget-range {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Vibe grid */
+.aiw-vibe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
+.aiw-vibe-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px var(--space-md);
+  background: var(--bg-input);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.aiw-vibe-pill:hover {
+  border-color: var(--blue-light);
+  color: var(--text-primary);
+}
+
+.aiw-vibe-pill.selected {
+  border-color: var(--blue-primary);
+  background: rgba(0, 100, 255, 0.1);
+  color: white;
+}
+
+/* Summary */
+.aiw-summary {
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.aiw-summary h4 {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.aiw-summary-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.aiw-summary-grid span {
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  background: var(--bg-card);
+  border-radius: 999px;
+  color: var(--text-secondary);
+}
+
+/* Nav */
+.aiw-nav {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.aiw-nav-spacer {
+  flex: 1;
+}
+
+.aiw-btn {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px var(--space-xl);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.aiw-btn-back {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.aiw-btn-back:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.aiw-btn-next {
+  background: var(--blue-primary);
+  color: white;
+}
+
+.aiw-btn-next:hover {
+  background: var(--blue-dark);
+  box-shadow: 0 4px 15px var(--blue-glow);
+}
+
+.aiw-btn-submit {
+  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
+  color: white;
+  font-size: 1rem;
+  padding: 12px var(--space-2xl);
+}
+
+.aiw-btn-submit:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0, 100, 255, 0.4);
+}
+
+/* Loading */
+.aiw-loading {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+.aiw-spinner {
+  width: 56px;
+  height: 56px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--blue-primary);
+  border-right-color: var(--race-purple);
+  border-bottom-color: var(--race-yellow);
+  border-radius: 50%;
+  margin: 0 auto var(--space-lg);
+  animation: spin 1s linear infinite;
+}
+
+.aiw-loading h2 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-xs);
+}
+
+.aiw-loading p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-lg);
+}
+
+.aiw-loading-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.aiw-loading-steps span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .aiw-card {
+    padding: var(--space-lg);
+  }
+
+  .aiw-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .aiw-budget-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .aiw-vibe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aiw-progress-step span {
+    display: none;
+  }
+}

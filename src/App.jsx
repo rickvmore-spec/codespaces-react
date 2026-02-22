@@ -2,34 +2,45 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import MadLibForm from './components/MadLibForm';
 import RaceRoute from './components/RaceRoute';
+import AIPlannerWizard from './components/AIPlannerWizard';
+import AIPlanDisplay from './components/AIPlanDisplay';
 import { generateRace } from './utils/raceGenerator';
 import './App.css';
 
+// Views: 'home' | 'aiWizard' | 'aiPlan' | 'race' | 'generating'
 function App() {
+  const [view, setView] = useState('home');
   const [race, setRace] = useState(null);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [aiPlan, setAiPlan] = useState(null);
 
   const handleGenerate = (formData) => {
-    setIsGenerating(true);
-    // Simulate a brief "planning" animation
+    setView('generating');
     setTimeout(() => {
       const generatedRace = generateRace(formData);
       setRace(generatedRace);
-      setIsGenerating(false);
+      setView('race');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 1500);
   };
 
   const handleReset = () => {
     setRace(null);
+    setAiPlan(null);
+    setView('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleAIPlan = (plan) => {
+    setAiPlan(plan);
+    setView('aiPlan');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="app">
-      {!race && <Header />}
+      {view === 'home' && <Header />}
       <main className="app-main">
-        {isGenerating && (
+        {view === 'generating' && (
           <div className="generating-overlay">
             <div className="generating-content">
               <div className="generating-spinner" />
@@ -38,8 +49,38 @@ function App() {
             </div>
           </div>
         )}
-        {!race && !isGenerating && <MadLibForm onGenerate={handleGenerate} />}
-        {race && !isGenerating && <RaceRoute race={race} onReset={handleReset} />}
+
+        {view === 'home' && (
+          <>
+            <div className="mode-selector">
+              <button
+                className="mode-card"
+                onClick={() => setView('aiWizard')}
+              >
+                <span className="mode-icon">🤖</span>
+                <span className="mode-title">AI Smart Planner</span>
+                <span className="mode-desc">
+                  Tell us the basics — our AI builds a complete event plan tailored to your city
+                </span>
+                <span className="mode-tag">POWERED BY OPENAI</span>
+              </button>
+            </div>
+            <MadLibForm onGenerate={handleGenerate} />
+          </>
+        )}
+
+        {view === 'race' && <RaceRoute race={race} onReset={handleReset} />}
+
+        {view === 'aiWizard' && (
+          <AIPlannerWizard
+            onPlanGenerated={handleAIPlan}
+            onCancel={() => setView('home')}
+          />
+        )}
+
+        {view === 'aiPlan' && (
+          <AIPlanDisplay plan={aiPlan} onReset={handleReset} />
+        )}
       </main>
     </div>
   );

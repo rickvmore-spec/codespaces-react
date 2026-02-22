@@ -1,0 +1,341 @@
+/* ==========================================
+   AI PLAN DISPLAY — isolated styles
+   ========================================== */
+
+.aip-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+/* Header */
+.aip-header {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  background: radial-gradient(ellipse at center, rgba(0, 100, 255, 0.15) 0%, transparent 70%);
+  margin-bottom: var(--space-xl);
+}
+
+.aip-ai-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
+  color: white;
+  border-radius: 999px;
+  margin-bottom: var(--space-md);
+}
+
+.aip-title {
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, var(--race-yellow) 0%, var(--race-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+}
+
+.aip-location {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Sections */
+.aip-section {
+  margin-bottom: var(--space-xl);
+}
+
+.aip-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Summary */
+.aip-summary-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+
+.aip-summary-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Budget */
+.aip-budget-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+
+.aip-budget-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+}
+
+.aip-budget-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.aip-budget-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--race-green);
+}
+
+.aip-budget-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.aip-budget-divider {
+  width: 1px;
+  height: 50px;
+  background: var(--border-light);
+}
+
+/* Timeline */
+.aip-timeline {
+  position: relative;
+}
+
+.aip-timeline-card {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.aip-timeline-card:last-child {
+  margin-bottom: 0;
+}
+
+.aip-timeline-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.aip-timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.aip-timeline-dot span {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+}
+
+.aip-timeline-line {
+  position: absolute;
+  top: 32px;
+  bottom: -24px;
+  width: 2px;
+  background: var(--border-light);
+}
+
+.aip-timeline-card:last-child .aip-timeline-line {
+  display: none;
+}
+
+.aip-timeline-body {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.aip-timeline-time {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--blue-light);
+  margin-bottom: var(--space-xs);
+}
+
+.aip-timeline-title {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+  text-transform: none;
+}
+
+.aip-timeline-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.aip-timeline-location {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: 0.85rem;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.aip-loc-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.aip-timeline-location strong {
+  display: block;
+  color: var(--text-primary);
+}
+
+.aip-loc-address {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.aip-booking-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 3px 10px;
+  background: rgba(255, 133, 27, 0.15);
+  border: 1px solid rgba(255, 133, 27, 0.3);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--race-orange);
+}
+
+/* Shopping List */
+.aip-shopping-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+
+.aip-shopping-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.aip-shopping-list li {
+  position: relative;
+  padding-left: var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.aip-shopping-list li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+/* Host Message */
+.aip-host-section {
+  margin-top: var(--space-lg);
+}
+
+.aip-host-message {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 100, 255, 0.3);
+  border-radius: var(--radius-md);
+}
+
+.aip-host-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.aip-host-message h4 {
+  font-size: 0.85rem;
+  color: var(--blue-light);
+  margin-bottom: var(--space-xs);
+  text-transform: none;
+}
+
+.aip-host-message p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Actions */
+.aip-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-2xl);
+}
+
+/* Footer */
+.aip-footer {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.aip-footer strong {
+  color: var(--blue-light);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .aip-container {
+    padding: var(--space-md);
+  }
+
+  .aip-title {
+    font-size: 1.6rem;
+  }
+
+  .aip-budget-row {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .aip-budget-divider {
+    width: 60px;
+    height: 1px;
+  }
+
+  .aip-shopping-list {
+    grid-template-columns: 1fr;
+  }
+}
