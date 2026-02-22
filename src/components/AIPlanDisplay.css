@@ -1,5 +1,6 @@
 /* ==========================================
    AI PLAN DISPLAY — isolated styles
+   Amazing Race red/yellow/black/white theme
    ========================================== */
 
 .aip-container {
@@ -12,7 +13,7 @@
 .aip-header {
   text-align: center;
   padding: var(--space-2xl) 0;
-  background: radial-gradient(ellipse at center, rgba(0, 100, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, var(--ar-red-glow) 0%, transparent 70%);
   margin-bottom: var(--space-xl);
 }
 
@@ -24,7 +25,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 4px 14px;
-  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
+  background: var(--ar-red);
   color: white;
   border-radius: 999px;
   margin-bottom: var(--space-md);
@@ -32,7 +33,7 @@
 
 .aip-title {
   font-size: 2.2rem;
-  background: linear-gradient(135deg, var(--race-yellow) 0%, var(--race-red) 100%);
+  background: linear-gradient(135deg, var(--ar-yellow) 0%, var(--ar-red) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -94,7 +95,7 @@
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--race-green);
+  color: var(--ar-yellow);
 }
 
 .aip-budget-label {
@@ -138,7 +139,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--blue-primary);
+  background: var(--ar-red);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,7 +179,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--blue-light);
+  color: var(--ar-yellow);
   margin-bottom: var(--space-xs);
 }
 
@@ -261,7 +262,7 @@
   content: '☐';
   position: absolute;
   left: 0;
-  color: var(--text-muted);
+  color: var(--ar-yellow);
 }
 
 /* Host Message */
@@ -274,18 +275,37 @@
   gap: var(--space-md);
   padding: var(--space-lg);
   background: var(--bg-card);
-  border: 1px solid rgba(0, 100, 255, 0.3);
+  border: 1px solid rgba(204, 0, 0, 0.3);
   border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.aip-host-message::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--ar-red) 0px,
+    var(--ar-red) 6px,
+    var(--ar-yellow) 6px,
+    var(--ar-yellow) 12px
+  );
 }
 
 .aip-host-icon {
   font-size: 1.8rem;
   flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .aip-host-message h4 {
   font-size: 0.85rem;
-  color: var(--blue-light);
+  color: var(--ar-yellow);
   margin-bottom: var(--space-xs);
   text-transform: none;
 }
@@ -300,6 +320,7 @@
 .aip-actions {
   display: flex;
   justify-content: center;
+  gap: var(--space-md);
   margin-top: var(--space-2xl);
 }
 
@@ -312,7 +333,7 @@
 }
 
 .aip-footer strong {
-  color: var(--blue-light);
+  color: var(--ar-yellow);
 }
 
 /* Responsive */

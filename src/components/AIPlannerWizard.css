@@ -1,5 +1,6 @@
 /* ==========================================
    AI PLANNER WIZARD — isolated styles
+   Amazing Race red/yellow/black/white theme
    ========================================== */
 
 .aiw-container {
@@ -23,7 +24,13 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #0064FF, #B10DC9, #FF4136, #FFDC00, #2ECC40);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ar-red) 0px,
+    var(--ar-red) 20px,
+    var(--ar-yellow) 20px,
+    var(--ar-yellow) 40px
+  );
 }
 
 /* Header */
@@ -40,7 +47,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 3px 12px;
-  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
+  background: var(--ar-red);
   color: white;
   border-radius: 999px;
   margin-bottom: var(--space-sm);
@@ -92,15 +99,15 @@
 }
 
 .aiw-progress-step.active .aiw-progress-dot {
-  background: var(--blue-primary);
-  border-color: var(--blue-primary);
-  box-shadow: 0 0 16px var(--blue-glow);
+  background: var(--ar-red);
+  border-color: var(--ar-red);
+  box-shadow: 0 0 16px var(--ar-red-glow);
 }
 
 .aiw-progress-step.done .aiw-progress-dot {
-  background: var(--race-green);
-  border-color: var(--race-green);
-  color: white;
+  background: var(--ar-yellow);
+  border-color: var(--ar-yellow);
+  color: black;
   font-weight: 700;
 }
 
@@ -124,7 +131,7 @@
 
 .aiw-progress-fill {
   height: 100%;
-  background: var(--blue-primary);
+  background: var(--ar-red);
   transition: width 0.4s ease;
 }
 
@@ -135,10 +142,10 @@
   gap: var(--space-sm);
   padding: var(--space-md);
   margin-bottom: var(--space-lg);
-  background: rgba(255, 65, 54, 0.1);
-  border: 1px solid rgba(255, 65, 54, 0.3);
+  background: rgba(204, 0, 0, 0.1);
+  border: 1px solid rgba(204, 0, 0, 0.3);
   border-radius: var(--radius-sm);
-  color: var(--race-red);
+  color: var(--ar-red-bright);
   font-size: 0.85rem;
 }
 
@@ -189,17 +196,17 @@
 }
 
 .aiw-field input:focus {
-  border-color: var(--blue-primary);
-  box-shadow: 0 0 0 3px var(--blue-glow);
+  border-color: var(--ar-yellow);
+  box-shadow: 0 0 0 3px var(--ar-yellow-glow);
 }
 
 .aiw-field input.error {
-  border-color: var(--race-red);
+  border-color: var(--ar-red);
 }
 
 .aiw-field-error {
   display: block;
-  color: var(--race-red);
+  color: var(--ar-red-bright);
   font-size: 0.75rem;
   margin-top: 4px;
 }
@@ -232,14 +239,14 @@
 }
 
 .aiw-budget-card:hover {
-  border-color: var(--blue-light);
+  border-color: var(--ar-yellow);
   background: var(--bg-card-hover);
 }
 
 .aiw-budget-card.selected {
-  border-color: var(--blue-primary);
-  background: rgba(0, 100, 255, 0.1);
-  box-shadow: 0 0 16px var(--blue-glow);
+  border-color: var(--ar-yellow);
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 16px var(--ar-yellow-glow);
 }
 
 .aiw-budget-icon {
@@ -283,13 +290,13 @@
 }
 
 .aiw-vibe-pill:hover {
-  border-color: var(--blue-light);
+  border-color: var(--ar-yellow);
   color: var(--text-primary);
 }
 
 .aiw-vibe-pill.selected {
-  border-color: var(--blue-primary);
-  background: rgba(0, 100, 255, 0.1);
+  border-color: var(--ar-red);
+  background: rgba(204, 0, 0, 0.1);
   color: white;
 }
 
@@ -362,25 +369,26 @@
 }
 
 .aiw-btn-next {
-  background: var(--blue-primary);
+  background: var(--ar-red);
   color: white;
 }
 
 .aiw-btn-next:hover {
-  background: var(--blue-dark);
-  box-shadow: 0 4px 15px var(--blue-glow);
+  background: var(--ar-red-dark);
+  box-shadow: 0 4px 15px var(--ar-red-glow);
 }
 
 .aiw-btn-submit {
-  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
-  color: white;
+  background: linear-gradient(135deg, var(--ar-red), var(--ar-yellow));
+  color: black;
   font-size: 1rem;
+  font-weight: 700;
   padding: 12px var(--space-2xl);
 }
 
 .aiw-btn-submit:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 20px rgba(0, 100, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(204, 0, 0, 0.4);
 }
 
 /* Loading */
@@ -393,9 +401,9 @@
   width: 56px;
   height: 56px;
   border: 4px solid var(--border-light);
-  border-top-color: var(--blue-primary);
-  border-right-color: var(--race-purple);
-  border-bottom-color: var(--race-yellow);
+  border-top-color: var(--ar-red);
+  border-right-color: var(--ar-yellow);
+  border-bottom-color: var(--ar-red);
   border-radius: 50%;
   margin: 0 auto var(--space-lg);
   animation: spin 1s linear infinite;

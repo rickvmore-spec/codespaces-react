@@ -112,6 +112,9 @@ export default function AIPlanDisplay({ plan, onReset }) {
 
       {/* Actions */}
       <div className="aip-actions">
+        <button className="print-btn" onClick={() => window.print()}>
+          🖨️ Print / Save PDF
+        </button>
         <button className="aiw-btn aiw-btn-back" onClick={onReset}>
           🔄 Plan Another Race
         </button>

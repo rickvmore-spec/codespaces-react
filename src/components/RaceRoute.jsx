@@ -230,6 +230,9 @@ export default function RaceRoute({ race, onReset }) {
       <div className="race-controls">
         <button className="btn btn-small" onClick={expandAll}>Expand All</button>
         <button className="btn btn-small" onClick={collapseAll}>Collapse All</button>
+        <button className="print-btn" onClick={() => { expandAll(); setTimeout(() => window.print(), 300); }}>
+          🖨️ Print / Save PDF
+        </button>
         <button className="btn btn-small btn-reset" onClick={onReset}>🔄 Plan New Race</button>
       </div>
 

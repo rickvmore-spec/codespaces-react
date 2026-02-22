@@ -4,30 +4,40 @@
    ========================================== */
 
 :root {
-  /* Paramount+ inspired palette */
-  --blue-primary: #0064FF;
-  --blue-dark: #003CBB;
-  --blue-light: #4D94FF;
-  --blue-glow: rgba(0, 100, 255, 0.3);
+  /* Amazing Race Palette — The iconic red/yellow/black/white */
+  --ar-red: #CC0000;
+  --ar-red-bright: #E60000;
+  --ar-red-dark: #990000;
+  --ar-red-glow: rgba(204, 0, 0, 0.3);
+  --ar-yellow: #FFD700;
+  --ar-yellow-bright: #FFE433;
+  --ar-yellow-dark: #CC9900;
+  --ar-yellow-glow: rgba(255, 215, 0, 0.25);
 
-  /* Amazing Race colors */
-  --race-red: #FF4136;
-  --race-yellow: #FFDC00;
+  /* Supporting accent colors */
   --race-green: #2ECC40;
   --race-orange: #FF851B;
-  --race-purple: #B10DC9;
 
-  /* Neutrals */
-  --bg-primary: #0A0E1A;
-  --bg-secondary: #111827;
-  --bg-card: #1A2035;
-  --bg-card-hover: #222B45;
-  --bg-input: #0F1629;
+  /* Neutrals — dark grounding with warm tones */
+  --bg-primary: #0C0C0C;
+  --bg-secondary: #141414;
+  --bg-card: #1A1A1A;
+  --bg-card-hover: #242424;
+  --bg-input: #111111;
   --text-primary: #FFFFFF;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --border-color: #1E293B;
-  --border-light: #334155;
+  --text-secondary: #B0B0B0;
+  --text-muted: #777777;
+  --border-color: #2A2A2A;
+  --border-light: #3A3A3A;
+
+  /* Envelope yellow — the clue card accent */
+  --envelope-yellow: #F5D442;
+  --envelope-bg: #3A3000;
+  --envelope-border: rgba(245, 212, 66, 0.4);
+
+  /* Pit stop mat — red/yellow stripe */
+  --mat-red: #CC0000;
+  --mat-yellow: #FFD700;
 
   /* Typography */
   --font-display: 'Oswald', sans-serif;
@@ -72,10 +82,183 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: var(--blue-light);
+  color: var(--ar-yellow);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--blue-primary);
+  color: var(--ar-yellow-bright);
+}
+
+/* ==========================================
+   PRINT BUTTON (shared)
+   ========================================== */
+
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px var(--space-lg);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.print-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--ar-yellow);
+  background: var(--bg-card-hover);
+}
+
+/* ==========================================
+   PRINT / PDF STYLES
+   ========================================== */
+
+@media print {
+  /* Reset to white background for printing */
+  :root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FFFFFF;
+    --bg-input: #F5F5F5;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --border-color: #DDDDDD;
+    --border-light: #CCCCCC;
+    --envelope-bg: #FFF8DC;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* Hide non-printable UI elements */
+  .app-header,
+  .header-top-bar,
+  .header-nav,
+  .print-btn,
+  .btn-reset,
+  .btn-small,
+  .race-controls,
+  .mode-selector,
+  .form-nav,
+  .form-progress,
+  .form-envelope-tab,
+  .generating-overlay,
+  .aip-actions,
+  .aiw-nav,
+  .aiw-progress,
+  .aiw-badge,
+  .aip-ai-badge,
+  .mode-tag,
+  .paramount-footer,
+  .aip-footer,
+  .footer-stream,
+  .leg-toggle,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ensure all leg cards are expanded */
+  .leg-content {
+    display: block !important;
+  }
+
+  .leg-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #999 !important;
+    margin-bottom: 12pt;
+  }
+
+  /* Cards should have borders for structure */
+  .race-element-card,
+  .aip-timeline-body,
+  .aip-summary-section,
+  .aip-budget-section,
+  .aip-shopping-section,
+  .challenge-box,
+  .detour-option,
+  .fork-path,
+  .pitstop-celebration,
+  .footer-tip {
+    border: 1px solid #CCC !important;
+    background: white !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Route line visible in print */
+  .connector-line,
+  .aip-timeline-line {
+    background: #999 !important;
+  }
+
+  .connector-dot,
+  .aip-timeline-dot {
+    border: 2px solid #999 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Keep key accent colors in print */
+  .element-badge,
+  .leg-number,
+  .start-banner,
+  .finish-banner {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Clue envelopes always shown open */
+  .clue-sealed {
+    display: none !important;
+  }
+  .clue-revealed {
+    display: block !important;
+  }
+
+  /* Title should be readable in black */
+  .race-title,
+  .hero-amazing,
+  .aip-title {
+    -webkit-text-fill-color: #CC0000 !important;
+    color: #CC0000 !important;
+    background: none !important;
+  }
+
+  .stat-value {
+    color: #CC0000 !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+
+  /* Expand race-route to full width */
+  .race-route-container,
+  .aip-container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Detour grid prints nicely */
+  .detour-options {
+    grid-template-columns: 1fr auto 1fr !important;
+  }
 }

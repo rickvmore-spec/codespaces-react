@@ -19,7 +19,7 @@
 
 .app-header {
   background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 2px solid var(--ar-red);
 }
 
 .header-top-bar {
@@ -63,13 +63,13 @@
 }
 
 .nav-item.active {
-  border-bottom: 2px solid var(--blue-primary);
+  border-bottom: 2px solid var(--ar-yellow);
 }
 
 .hero-banner {
   text-align: center;
   padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
-  background: radial-gradient(ellipse at center top, var(--blue-glow) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center top, var(--ar-red-glow) 0%, transparent 60%);
 }
 
 .hero-content {
@@ -106,7 +106,7 @@
 .hero-amazing {
   font-size: 3.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--race-yellow) 0%, var(--race-red) 100%);
+  background: linear-gradient(135deg, var(--ar-yellow) 0%, var(--ar-red) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -116,7 +116,7 @@
 .hero-sub {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--blue-light);
+  color: var(--ar-yellow);
   letter-spacing: 0.15em;
 }
 
@@ -154,7 +154,13 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--race-red), var(--race-yellow), var(--race-green), var(--blue-primary));
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ar-red) 0px,
+    var(--ar-red) 20px,
+    var(--ar-yellow) 20px,
+    var(--ar-yellow) 40px
+  );
 }
 
 .form-envelope-tab {
@@ -165,7 +171,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-muted);
+  color: var(--ar-yellow-dark);
   display: flex;
   align-items: center;
   gap: var(--space-xs);
@@ -208,15 +214,15 @@
 }
 
 .progress-step.active .progress-dot {
-  background: var(--blue-primary);
-  border-color: var(--blue-primary);
-  box-shadow: 0 0 20px var(--blue-glow);
+  background: var(--ar-red);
+  border-color: var(--ar-red);
+  box-shadow: 0 0 20px var(--ar-red-glow);
 }
 
 .progress-step.completed .progress-dot {
-  background: var(--race-green);
-  border-color: var(--race-green);
-  color: white;
+  background: var(--ar-yellow);
+  border-color: var(--ar-yellow);
+  color: black;
   font-weight: 700;
 }
 
@@ -241,7 +247,7 @@
 
 .progress-fill {
   height: 100%;
-  background: var(--blue-primary);
+  background: var(--ar-red);
   transition: width 0.4s ease;
 }
 
@@ -302,7 +308,7 @@
   background: var(--bg-input);
   border: 2px solid var(--border-light);
   border-radius: var(--radius-sm);
-  color: var(--text-primary);
+  color: var(--ar-yellow);
   font-family: var(--font-display);
   font-size: 1.2rem;
   font-weight: 600;
@@ -314,12 +320,12 @@
 }
 
 .madlib-input:focus {
-  border-color: var(--blue-primary);
-  box-shadow: 0 0 0 3px var(--blue-glow);
+  border-color: var(--ar-yellow);
+  box-shadow: 0 0 0 3px var(--ar-yellow-glow);
 }
 
 .madlib-input.error {
-  border-color: var(--race-red);
+  border-color: var(--ar-red);
 }
 
 .zip-input {
@@ -333,7 +339,7 @@
 
 .error-text {
   display: block;
-  color: var(--race-red);
+  color: var(--ar-red-bright);
   font-size: 0.75rem;
   margin-top: 2px;
   font-family: var(--font-body);
@@ -365,7 +371,7 @@
 
 .pill-selector.error {
   padding: var(--space-sm);
-  border: 1px solid var(--race-red);
+  border: 1px solid var(--ar-red);
   border-radius: var(--radius-md);
 }
 
@@ -383,13 +389,13 @@
 }
 
 .pill:hover {
-  border-color: var(--blue-light);
+  border-color: var(--ar-yellow);
   color: var(--text-primary);
 }
 
 .pill.selected {
-  background: var(--blue-primary);
-  border-color: var(--blue-primary);
+  background: var(--ar-red);
+  border-color: var(--ar-red);
   color: white;
 }
 
@@ -426,14 +432,14 @@
 }
 
 .style-card:hover {
-  border-color: var(--blue-light);
+  border-color: var(--ar-yellow);
   background: var(--bg-card-hover);
 }
 
 .style-card.selected {
-  border-color: var(--blue-primary);
-  background: rgba(0, 100, 255, 0.1);
-  box-shadow: 0 0 20px var(--blue-glow);
+  border-color: var(--ar-yellow);
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 20px var(--ar-yellow-glow);
 }
 
 .card-icon {
@@ -475,8 +481,8 @@
 }
 
 .madlib-textarea:focus {
-  border-color: var(--blue-primary);
-  box-shadow: 0 0 0 3px var(--blue-glow);
+  border-color: var(--ar-yellow);
+  box-shadow: 0 0 0 3px var(--ar-yellow-glow);
 }
 
 .madlib-textarea::placeholder {
@@ -563,17 +569,17 @@
 }
 
 .btn-next {
-  background: var(--blue-primary);
+  background: var(--ar-red);
   color: white;
 }
 
 .btn-next:hover {
-  background: var(--blue-dark);
-  box-shadow: 0 4px 15px var(--blue-glow);
+  background: var(--ar-red-dark);
+  box-shadow: 0 4px 15px var(--ar-red-glow);
 }
 
 .btn-generate {
-  background: linear-gradient(135deg, var(--race-red) 0%, var(--race-yellow) 100%);
+  background: linear-gradient(135deg, var(--ar-red) 0%, var(--ar-yellow) 100%);
   color: #1a1a1a;
   font-size: 1.1rem;
   padding: var(--space-md) var(--space-2xl);
@@ -581,7 +587,7 @@
 
 .btn-generate:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 20px rgba(255, 65, 54, 0.4);
+  box-shadow: 0 4px 20px rgba(204, 0, 0, 0.4);
 }
 
 .btn-small {
@@ -598,12 +604,12 @@
 }
 
 .btn-reset {
-  color: var(--race-red);
-  border-color: var(--race-red);
+  color: var(--ar-red);
+  border-color: var(--ar-red);
 }
 
 .btn-reset:hover {
-  background: var(--race-red);
+  background: var(--ar-red);
   color: white;
 }
 
@@ -625,8 +631,8 @@
   align-items: center;
   gap: var(--space-xs);
   padding: var(--space-lg);
-  background: linear-gradient(135deg, rgba(0, 100, 255, 0.08) 0%, rgba(177, 13, 201, 0.08) 100%);
-  border: 2px solid rgba(0, 100, 255, 0.25);
+  background: linear-gradient(135deg, rgba(204, 0, 0, 0.08) 0%, rgba(255, 215, 0, 0.08) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.25);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.25s;
@@ -634,10 +640,10 @@
 }
 
 .mode-card:hover {
-  border-color: var(--blue-primary);
-  background: linear-gradient(135deg, rgba(0, 100, 255, 0.15) 0%, rgba(177, 13, 201, 0.15) 100%);
+  border-color: var(--ar-yellow);
+  background: linear-gradient(135deg, rgba(204, 0, 0, 0.12) 0%, rgba(255, 215, 0, 0.12) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 100, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
 }
 
 .mode-icon {
@@ -666,8 +672,8 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 2px 10px;
-  background: linear-gradient(135deg, var(--blue-primary), var(--race-purple));
-  color: white;
+  background: linear-gradient(135deg, var(--ar-red), var(--ar-yellow));
+  color: black;
   border-radius: 999px;
   margin-top: var(--space-xs);
 }
@@ -679,7 +685,7 @@
 .generating-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 14, 26, 0.95);
+  background: rgba(12, 12, 12, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -704,9 +710,9 @@
   width: 60px;
   height: 60px;
   border: 4px solid var(--border-light);
-  border-top-color: var(--blue-primary);
-  border-right-color: var(--race-red);
-  border-bottom-color: var(--race-yellow);
+  border-top-color: var(--ar-red);
+  border-right-color: var(--ar-yellow);
+  border-bottom-color: var(--ar-red);
   border-radius: 50%;
   margin: 0 auto var(--space-lg);
   animation: spin 1s linear infinite;
@@ -734,7 +740,7 @@
 
 .race-banner {
   padding: var(--space-2xl) var(--space-xl);
-  background: radial-gradient(ellipse at center, var(--blue-glow) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, var(--ar-red-glow) 0%, transparent 70%);
 }
 
 .race-flag-icon {
@@ -744,7 +750,7 @@
 
 .race-title {
   font-size: 2.5rem;
-  background: linear-gradient(135deg, var(--race-yellow) 0%, var(--race-red) 100%);
+  background: linear-gradient(135deg, var(--ar-yellow) 0%, var(--ar-red) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -782,7 +788,7 @@
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--blue-light);
+  color: var(--ar-yellow);
   text-transform: capitalize;
 }
 
@@ -799,10 +805,10 @@
   gap: var(--space-sm);
   justify-content: center;
   padding: var(--space-md);
-  background: rgba(255, 220, 0, 0.1);
-  border: 1px solid rgba(255, 220, 0, 0.3);
+  background: var(--envelope-bg);
+  border: 1px solid var(--envelope-border);
   border-radius: var(--radius-sm);
-  color: var(--race-yellow);
+  color: var(--envelope-yellow);
   font-size: 0.9rem;
 }
 
@@ -814,7 +820,7 @@
   flex-wrap: wrap;
 }
 
-/* Start / Finish Banners */
+/* Start / Finish Banners — inspired by the pit stop mat */
 .start-banner,
 .finish-banner {
   display: flex;
@@ -827,18 +833,38 @@
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  position: relative;
+  overflow: hidden;
 }
 
 .start-banner {
-  background: linear-gradient(135deg, rgba(0, 100, 255, 0.15) 0%, rgba(46, 204, 64, 0.15) 100%);
-  border: 1px solid rgba(0, 100, 255, 0.3);
-  color: var(--blue-light);
+  background: linear-gradient(135deg, rgba(204, 0, 0, 0.15) 0%, rgba(255, 215, 0, 0.1) 100%);
+  border: 2px solid var(--ar-red);
+  color: var(--ar-yellow);
+}
+
+/* Striped mat accent on start/finish */
+.start-banner::before,
+.finish-banner::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--ar-red) 0px,
+    var(--ar-red) 8px,
+    var(--ar-yellow) 8px,
+    var(--ar-yellow) 16px
+  );
 }
 
 .finish-banner {
-  background: linear-gradient(135deg, rgba(255, 220, 0, 0.15) 0%, rgba(255, 65, 54, 0.15) 100%);
-  border: 1px solid rgba(255, 220, 0, 0.3);
-  color: var(--race-yellow);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(204, 0, 0, 0.1) 100%);
+  border: 2px solid var(--ar-yellow);
+  color: var(--ar-yellow);
   margin-top: var(--space-lg);
 }
 
@@ -870,7 +896,7 @@
 }
 
 .leg-card.active {
-  border-color: var(--blue-primary);
+  border-color: var(--ar-red);
 }
 
 .leg-header {
@@ -892,7 +918,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   padding: var(--space-xs) var(--space-sm);
-  background: var(--blue-primary);
+  background: var(--ar-red);
   color: white;
   border-radius: var(--radius-sm);
   white-space: nowrap;
@@ -1008,10 +1034,10 @@
   margin-bottom: var(--space-md);
 }
 
-/* Clue Envelope */
+/* Clue Envelope — the iconic yellow envelope */
 .clue-envelope {
-  background: var(--bg-card);
-  border: 2px dashed var(--border-light);
+  background: var(--envelope-bg);
+  border: 2px dashed var(--envelope-border);
   border-radius: var(--radius-sm);
   padding: var(--space-md);
   cursor: pointer;
@@ -1020,7 +1046,8 @@
 }
 
 .clue-envelope:hover {
-  border-color: var(--blue-primary);
+  border-color: var(--ar-yellow);
+  background: rgba(58, 48, 0, 0.8);
 }
 
 .clue-sealed {
@@ -1028,7 +1055,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  color: var(--text-muted);
+  color: var(--envelope-yellow);
   font-style: italic;
 }
 
@@ -1037,7 +1064,7 @@
 }
 
 .clue-revealed {
-  color: var(--blue-light);
+  color: var(--ar-yellow);
   font-style: italic;
   animation: fadeIn 0.4s;
 }
@@ -1096,7 +1123,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--race-red);
+  color: var(--ar-red);
   display: block;
   margin-bottom: var(--space-xs);
 }
@@ -1137,19 +1164,19 @@
 }
 
 .option-a {
-  border-color: var(--race-yellow);
+  border-color: var(--ar-yellow);
 }
 
 .option-a h4 {
-  color: var(--race-yellow);
+  color: var(--ar-yellow);
 }
 
 .option-b {
-  border-color: var(--blue-light);
+  border-color: var(--ar-red-bright);
 }
 
 .option-b h4 {
-  color: var(--blue-light);
+  color: var(--ar-red-bright);
 }
 
 .detour-option p {
@@ -1201,11 +1228,11 @@
 }
 
 .path-a {
-  border-top: 3px solid var(--race-purple);
+  border-top: 3px solid var(--ar-yellow);
 }
 
 .path-b {
-  border-top: 3px solid var(--race-green);
+  border-top: 3px solid var(--ar-red);
 }
 
 .fork-path p {
@@ -1213,19 +1240,38 @@
   color: var(--text-secondary);
 }
 
-/* Pit Stop */
+/* Pit Stop — red/yellow mat stripes */
 .pitstop-celebration {
   display: flex;
   align-items: center;
   gap: var(--space-md);
   background: var(--bg-card);
-  border: 1px solid rgba(46, 204, 64, 0.3);
   border-radius: var(--radius-sm);
   padding: var(--space-md);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(204, 0, 0, 0.3);
+}
+
+.pitstop-celebration::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--ar-red) 0px,
+    var(--ar-red) 6px,
+    var(--ar-yellow) 6px,
+    var(--ar-yellow) 12px
+  );
 }
 
 .celebration-icon {
   font-size: 1.5rem;
+  margin-left: 8px;
 }
 
 .pitstop-celebration p {
@@ -1270,7 +1316,7 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--race-green);
+  color: var(--ar-yellow);
   font-weight: 700;
 }
 
@@ -1282,7 +1328,7 @@
 }
 
 .paramount-footer strong {
-  color: var(--blue-light);
+  color: var(--ar-yellow);
 }
 
 .footer-stream {
