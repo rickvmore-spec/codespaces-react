@@ -2,6 +2,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import aiPlanRoute from './aiPlanRoute.js';
+import chatFollowupRoute from './chatFollowupRoute.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // API routes
 app.use('/api', aiPlanRoute);
+app.use('/api', chatFollowupRoute);
 
 // In production, serve the Vite build
 if (process.env.NODE_ENV === 'production') {

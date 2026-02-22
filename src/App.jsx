@@ -4,10 +4,11 @@ import MadLibForm from './components/MadLibForm';
 import RaceRoute from './components/RaceRoute';
 import AIPlannerWizard from './components/AIPlannerWizard';
 import AIPlanDisplay from './components/AIPlanDisplay';
+import ChatPlanner from './components/ChatPlanner';
 import { generateRace } from './utils/raceGenerator';
 import './App.css';
 
-// Views: 'home' | 'aiWizard' | 'aiPlan' | 'race' | 'generating'
+// Views: 'home' | 'aiWizard' | 'aiPlan' | 'race' | 'generating' | 'chatPlanner'
 function App() {
   const [view, setView] = useState('home');
   const [race, setRace] = useState(null);
@@ -55,6 +56,17 @@ function App() {
             <div className="mode-selector">
               <button
                 className="mode-card"
+                onClick={() => setView('chatPlanner')}
+              >
+                <span className="mode-icon">💬</span>
+                <span className="mode-title">Chat with Race Director</span>
+                <span className="mode-desc">
+                  Tell our AI chatbot what you love — it'll ask smart follow-ups and build the perfect race
+                </span>
+                <span className="mode-tag">CONVERSATIONAL AI</span>
+              </button>
+              <button
+                className="mode-card"
                 onClick={() => setView('aiWizard')}
               >
                 <span className="mode-icon">🤖</span>
@@ -80,6 +92,13 @@ function App() {
 
         {view === 'aiPlan' && (
           <AIPlanDisplay plan={aiPlan} onReset={handleReset} />
+        )}
+
+        {view === 'chatPlanner' && (
+          <ChatPlanner
+            onPlanGenerated={handleAIPlan}
+            onCancel={() => setView('home')}
+          />
         )}
       </main>
     </div>
